@@ -1,0 +1,20 @@
+version: '3.9'
+
+services:
+  consumer:
+    image: consumer
+    environment:
+      - MONGO_URI=mongodb://admin:password@mongodb:27017/test?authSource=admin&readPreference=primary&ssl=false
+      - MONGO_DATABASE=demo
+      - RABBITMQ_URI=amqp://user:password@rabbitmq:5672
+      - RABBITMQ_QUEUE=rss_urls
+    networks:
+      - app_network
+    external_links:
+      - mongodb
+      - rabbitmq
+    scale: 5
+
+networks:
+  app_network:
+    external: true
