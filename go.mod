@@ -1,4 +1,4 @@
-module rabbitmq
+module github.com/disharjayanth/rabbitmq
 
 go 1.17
 
